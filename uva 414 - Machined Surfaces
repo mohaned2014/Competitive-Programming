@@ -1,0 +1,40 @@
+//uva 414 - Machined Surfaces
+
+#include <iostream>
+#include <string>
+#include <bitset>
+#include <cmath>
+#include <deque>
+using namespace std;
+int main()
+{
+    int x;
+    while(cin>>x && x!=0)
+    {
+        cin.ignore();
+        int arr[15]={0};
+        int sum =0;
+        int maxi=0;
+        string temp;
+        for(int i=0;i<x;i++)
+        {
+            sum =0;
+            getline(cin,temp);
+            for(int j=0;j<25;j++)
+            {
+                 if(temp[j] == 'X')
+                 {
+                    sum+=1;
+                 }
+            }
+            arr[i]=sum;
+            maxi=max(maxi,arr[i]);
+        }
+        int ans =0;
+        for(int i=0;i<x;i++)
+            ans+= maxi-arr[i];
+        cout<<ans<<endl;
+
+    }
+
+}
