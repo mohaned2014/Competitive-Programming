@@ -1,0 +1,58 @@
+// uva 11988 Broken Keyboard (a.k.a. Beiju Text)
+#include <iostream>
+#include <string>
+#include <bitset>
+#include <cmath>
+#include <deque>
+using namespace std;
+int main()
+{
+    string x;
+    while(getline(cin,x))
+    {
+
+        deque<string> dq(0);
+        bool first =false;
+        bool fronti =false;
+        bool backi =false;
+        for(int i =0;i<x.size();i++)
+        {
+            string temp;
+
+            while (i<x.size() && x.at(i) != '[' && x.at(i) !=']' &&x.at(i)!=' '  )
+                {
+                    temp+=x[i];
+                    i++;
+                }
+
+                //cout<<i<<endl;
+            if(fronti)
+                dq.push_front(temp);
+            else if(backi)
+                dq.push_back(temp);
+            else
+                dq.push_front(temp);
+            if(i == x.size())
+                break;
+            if(x.at(i)=='[')
+            {
+               fronti =true;
+                backi =false;
+            }
+            else if(x.at(i) == ']')
+            {
+                backi =true;
+                fronti =false;
+            }
+            //cout<<temp<<"   "<<fronti<<"    "<<backi<<endl;
+
+
+
+        }
+        for(string a :dq)
+            cout<<a;
+        cout<<endl;
+
+    }
+
+}
