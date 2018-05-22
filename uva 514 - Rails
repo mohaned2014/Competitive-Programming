@@ -1,0 +1,62 @@
+//uva 514 - Rails
+
+#include <iostream>
+#include <string>
+#include <bitset>
+#include <cmath>
+#include <deque>
+#include <stack>
+using namespace std;
+int main()
+{
+
+    int x;
+    int arr[1005]={0};
+
+    while(true)
+    {
+        cin>>x;
+        if(x==0)
+            break;
+        while(true)
+        {
+            for(int i =1;i<=x;i++)
+            {
+                cin>>arr[i];
+                if(arr[1]==0)
+                    break;
+
+            }
+            if(arr[1]==0)
+            {
+                cout<<endl;
+                break;
+            }
+
+            int counter =1;
+            int index =1;
+            stack<int> st;
+            while(counter<=x)
+            {
+                st.push(counter);
+                while(!st.empty() && st.top()==arr[index])
+                {
+                    st.pop();
+                    index++;
+                    if(index>x)
+                        break;
+                }
+                counter++;
+
+            }
+            if(st.empty())
+                cout<<"Yes"<<endl;
+            else
+                cout<<"No"<<endl;
+
+
+
+
+            }
+        }
+}
