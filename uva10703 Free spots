@@ -1,0 +1,47 @@
+//uva10703 Free spots
+
+#include <iostream>
+#include <string>
+#include <bitset>
+#include <cmath>
+#include <deque>
+#include <stack>
+using namespace std;
+int main()
+{
+    int x,y,a ;
+    while(cin>>x>>y>>a &&(x!= 0 || y!= 0 || a!=0))
+    {
+
+        bool arr[501][501] ={0};
+        int x1,x2,y1,y2;
+        if(a ==0)
+        {
+            cout<<"There are "<<x*y<<" empty spots."<<endl;
+            continue;
+        }
+        for(int s =0;s<a;s++){
+        cin>>x1>>y1>>x2>>y2;
+        for(int i=min(x1,x2),w =max(x1,x2);i<= w;i++){
+            for(int j =min(y1,y2),e=max(y1,y2);j<=e;j++)
+                arr[i][j] = 1;
+            }
+        }
+        int counter =0;
+        for(int i =1;i<=x;i++)
+        {
+            for(int j =1 ;j<=y;j++)
+            {
+                if(arr[i][j]==0)
+                    counter++;
+            }
+        }
+        if (counter ==0)
+            cout<<"There is no empty spots."<<endl;
+        else if(counter==1)
+            cout<<"There is one empty spot."<<endl;
+        else
+            cout<<"There are "<<counter<<" empty spots."<<endl;
+
+    }
+}
