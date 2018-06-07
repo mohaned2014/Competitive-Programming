@@ -1,0 +1,81 @@
+//11495 - Bubbles and Buckets
+
+#include <random>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
+#include <deque>
+#include <algorithm>    // std::reverse
+#include <map>
+#define loop(n)   for(int i=0;i<(n);i++)
+#define loop1(n) for(int i=1;i<=(n);i++)
+#define endl '\n'
+int counter =0;
+using namespace std;
+
+void mergei(vector<int>::iterator LB,vector<int>::iterator LE ,vector<int>::iterator RB,vector<int>::iterator RE,vector<int>& output)
+{
+    auto it = output.begin();
+    while(it!=output.end())
+    {
+
+        if(RB==RE ||(LB != LE && *LB <= *RB))
+        {
+            *it = *LB;
+            LB++;
+        }
+        else
+        {
+            counter+= (LE-LB);
+            *it = *RB;
+            RB++;
+        }
+        it++;
+    }
+
+}
+vector<int> div_merge( vector<int>& v1)
+{
+    //base case
+    if(v1.size()<=1) return v1;
+    vector<int> output(v1.size());
+
+    //split
+    int midpoint = v1.size()/2;
+    vector<int> left(v1.begin(),v1.begin()+midpoint);
+    vector<int> right(v1.begin()+midpoint,v1.end());
+    //divide and sort
+    left = div_merge(left);
+    right = div_merge(right);
+
+    //merge
+    mergei(left.begin(),left.end(),right.begin(),right.end(),output);
+
+    return output;
+
+}
+
+
+int main()
+{
+    cin.tie(0);
+    cin.sync_with_stdio(0);
+
+    int n;
+    while( cin>>n && n!=0)
+    {
+        counter=0;
+        vector<int>v1 (n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>v1[i];
+        }
+        v1 =div_merge(v1);
+        if(counter%2 ==0)
+            cout<<"Carlos"<<endl;
+        else
+            cout<<"Marcelo"<<endl;
+
+    }
+}
