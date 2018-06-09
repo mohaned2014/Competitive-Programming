@@ -1,0 +1,87 @@
+//spoj AGGRCOW - Aggressive cows
+
+#include <random>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
+#include <deque>
+#include <algorithm>    // std::reverse
+#include <map>
+#define loop(n)   for(int i=0;i<(n);i++)
+#define loop1(n) for(int i=1;i<=(n);i++)
+#define endl '\n'
+using namespace std;
+
+bool isItPosible(vector<int>&v1,int dis,int cows)
+{
+    int lastplace =0;
+    int postion =1;
+    int si =v1.size();
+    int counter = 1;
+    while( postion<= si-1)
+    {
+        if( (v1[postion] - v1[lastplace]) >= dis)
+        {
+            lastplace = postion;
+
+            counter++;
+        }
+
+        postion++;
+
+    }
+    if(counter >=cows )
+        return true;
+    else
+        return false;
+
+}
+int binary(int mini ,int maxi,vector<int>& v1,int cows)
+{
+    int mid = (mini+maxi)/2;
+    if(isItPosible(v1,mid,cows)&& !isItPosible(v1,mid+1,cows))
+    {
+        return mid;
+    }
+    if(isItPosible(v1,mid,cows))
+    {
+
+        mini =mid+1;
+
+        return binary( mini , maxi, v1,cows);
+    }
+    else
+    {
+
+        maxi = mid-1;
+
+        return binary( mini , maxi, v1,cows);
+
+    }
+}
+int main()
+{
+    cin.tie(0);
+    cin.sync_with_stdio(0);
+
+    int test;
+    cin>>test;
+    while(test--)
+    {
+        int stalls,cows;
+        cin>>stalls>>cows;
+        vector<int> v1(stalls);
+        loop(stalls)
+        {
+             cin>>v1[i];
+        }
+        sort(v1.begin(),v1.end());
+        int maxi = v1[stalls-1] - v1[0];
+        maxi= maxi/ (cows -1 );
+
+        int ans = binary(1,maxi,v1,cows);
+        cout<<ans<<endl;
+
+    }
+}
