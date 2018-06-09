@@ -1,0 +1,84 @@
+//2.	UVa 10114 - Loansome Car Buyer * (just simulate the process)
+
+#include <random>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
+#include <deque>
+#include <algorithm>    // std::reverse
+#include <map>
+#define loop(n)   for(int i=0;i<(n);i++)
+#define loop1(n) for(int i=1;i<=(n);i++)
+#define endl '\n'
+
+using namespace std;
+double arr[102]={0};
+
+int main()
+{
+    cin.tie(0);
+    cin.sync_with_stdio(0);
+
+
+    int months,deprecord;
+    float downpayment,amountofloan;
+    while(cin>>months)
+    {
+        cin>>downpayment>>amountofloan>>deprecord;
+        if(months <0)
+            break;
+        double carprice =downpayment+amountofloan;
+        int counter=0;
+        int temp;
+        double temp2;
+
+        double payment =amountofloan/months;
+        double temp3;
+        for(int i=0;i<102;i++)
+            arr[i]=0;
+
+        for(int i=0;i<deprecord;i++)
+        {
+            cin>>temp>>temp2;
+            arr[temp]=temp2;
+            if( i== 0 )
+                temp3=arr[temp];
+        }
+
+        for(int i=0;i<102;i++)
+        {
+            if(arr[i]==0)
+                arr[i]=temp3;
+            else
+                temp3=arr[i];
+        }
+        carprice =carprice* (1 - arr[counter]);
+
+        int monthes=0;
+        while(true)
+        {
+
+            if(carprice >= amountofloan)
+            {
+                if(monthes==1)
+                    cout<<1<<" month"<<endl;
+                else
+                    cout<<monthes<<" months"<<endl;
+                break;
+            }
+
+            amountofloan-=payment;
+            counter++;
+            carprice =carprice* (1 - arr[counter]);
+            monthes++;
+
+
+
+
+
+        }
+
+
+    }
+}
