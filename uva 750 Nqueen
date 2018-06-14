@@ -1,0 +1,63 @@
+//presention error
+int row,colm;
+#include <random>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <map>
+#define loop(n)   for(int i=0;i<(n);i++)
+#define loop1(n) for(int i=1;i<=(n);i++)
+#define endl '\n'
+#include <iomanip>
+using namespace std;
+bool notsamediagnol(vector<int>& v)
+{
+    int s=v.size()-1;
+    for(int i =0;i<s;i++)
+    {
+        //last chosen box is on diagonal of past chosen
+        if(abs(s-i)== abs(v[s]-v[i]))
+            return false;
+    }
+    return true;
+}
+void queen(int x,vector<int>& v,int& counter)
+{
+    if(v.size()==x)
+    {
+        if(v[colm-1]==row){
+        counter++;
+        cout<<setw(2)<<counter<<"      ";
+        for(int i=0;i<v.size();i++)
+            cout<<v[i]<<" ";
+        cout<<endl;
+        }
+    }
+    for(int i =1;i<=8;i++)
+    {
+        //not on same raw or column  before and
+        if( find(v.begin(),v.end(),i ) == v.end()){
+            v.push_back(i);
+
+            if(notsamediagnol(v))
+                queen(x,v,counter);
+            v.pop_back();
+
+        }
+
+    }
+
+}
+
+int main()
+{
+    int tests;
+    cin>>tests;
+    while(tests--){
+        cin>>row>>colm;
+        cout<<"SOLN" <<"       COLUMN"<<endl<<" #"<<"      "<<"1 2 3 4 5 6 7 8"<<endl<<endl;
+        int counter=0;
+        vector<int> x;
+        queen(8,x,counter);
+    }
+}
