@@ -1,0 +1,89 @@
+//uva 406 Prime Cuts
+
+
+#include <bits/stdc++.h>
+#define ll long long
+ll NumberOfDivsors=1;
+using namespace std;
+vector<ll> PrimeFactroiztion(ll number)
+{
+    vector<ll> ans;
+    ll temp =number;
+    for(ll i=2 ; i*i <= temp ; i++)
+    {
+        ll cnt =1;
+        while(number%i ==0)
+        {
+            ans.push_back(i);
+            number /=i;
+            cnt++;
+        }
+        NumberOfDivsors *= cnt;
+    }
+    if(number !=1){
+        ans.push_back(number);
+    NumberOfDivsors *=2;
+    }
+    return ans;
+}
+
+bool notprime[1000005];
+
+vector<ll> seive(ll number)
+{
+    // false mean it is prime number && true means it is not prime
+    notprime[0] =1;
+    vector<ll> ans;
+    for(long long i=2;i<number;i++)
+    {
+        //if it is not prime ,continue
+        if(notprime[i])
+            continue;
+        ans.push_back(i);
+        for(ll j = i*i; j<=number;j+=i){
+            notprime[j] = 1 ;
+        }
+
+    }
+    return ans;
+}
+
+
+int main()
+{
+//    cin.tie(0);
+    //cin.sync_with_stdio(0);
+    //freopen("input.txt","r",stdin);
+    int x,c;
+    vector<ll> primes = seive(1009);
+    primes.insert(primes.begin(),1);
+    while(cin>>x&&cin>>c)
+    {
+
+        vector<ll> temp;
+        for(int i =0;i<primes.size()&&primes[i] <= x ;i++){
+            temp.push_back(primes[i]);
+        }
+        int numbersofprints =2*c;
+        if(temp.size()%2 !=0)
+             numbersofprints --;
+
+        int LastIndex =temp.size() -1;
+        int center =temp.size() - numbersofprints ;
+        center/=2;
+        cout<<x<<" "<<c<<":";
+        if( numbersofprints  > LastIndex){
+            for(auto nu:temp)
+                cout<<" "<<nu;
+
+        }
+        else{
+            for(int i = center;i<center+numbersofprints;i++)
+                cout<<" "<<temp[i];
+        }
+        cout<<endl<<endl;
+
+    }
+
+    return 0;
+}
