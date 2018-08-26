@@ -1,3 +1,4 @@
+
 //uva 10742	The New Rule in Euphomia
 
 #include <bits/stdc++.h>
