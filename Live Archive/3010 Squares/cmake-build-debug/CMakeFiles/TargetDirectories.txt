@@ -1,0 +1,3 @@
+D:/cs/problem solving/Competitive-Programming/Live Archive/3010 Squares/cmake-build-debug/CMakeFiles/3010_Squares.dir
+D:/cs/problem solving/Competitive-Programming/Live Archive/3010 Squares/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/cs/problem solving/Competitive-Programming/Live Archive/3010 Squares/cmake-build-debug/CMakeFiles/rebuild_cache.dir

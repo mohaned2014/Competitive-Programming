@@ -1,0 +1,3 @@
+D:/cs/problem solving/Competitive-Programming/spoj/NAKANJ - Minimum Knight moves !!!/cmake-build-debug/CMakeFiles/NAKANJ___Minimum_Knight_moves____.dir
+D:/cs/problem solving/Competitive-Programming/spoj/NAKANJ - Minimum Knight moves !!!/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/cs/problem solving/Competitive-Programming/spoj/NAKANJ - Minimum Knight moves !!!/cmake-build-debug/CMakeFiles/rebuild_cache.dir
