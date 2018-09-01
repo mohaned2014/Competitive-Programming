@@ -1,0 +1,3 @@
+D:/cs/problem solving/Competitive-Programming/spoj/BITMAP - Bitmap/cmake-build-debug/CMakeFiles/BITMAP___Bitmap.dir
+D:/cs/problem solving/Competitive-Programming/spoj/BITMAP - Bitmap/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/cs/problem solving/Competitive-Programming/spoj/BITMAP - Bitmap/cmake-build-debug/CMakeFiles/rebuild_cache.dir

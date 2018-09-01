@@ -1,0 +1,3 @@
+D:/cs/problem solving/Competitive-Programming/spoj/PPATH - Prime Path/cmake-build-debug/CMakeFiles/PPATH___Prime_Path.dir
+D:/cs/problem solving/Competitive-Programming/spoj/PPATH - Prime Path/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/cs/problem solving/Competitive-Programming/spoj/PPATH - Prime Path/cmake-build-debug/CMakeFiles/rebuild_cache.dir

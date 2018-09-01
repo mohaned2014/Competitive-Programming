@@ -1,0 +1,3 @@
+D:/cs/problem solving/Competitive-Programming/CodeForces/C. Fox And Names/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/cs/problem solving/Competitive-Programming/CodeForces/C. Fox And Names/cmake-build-debug/CMakeFiles/C__Fox_And_Names.dir
+D:/cs/problem solving/Competitive-Programming/CodeForces/C. Fox And Names/cmake-build-debug/CMakeFiles/rebuild_cache.dir
