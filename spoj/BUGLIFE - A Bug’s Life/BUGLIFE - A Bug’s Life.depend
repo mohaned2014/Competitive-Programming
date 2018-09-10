@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1535951645 source:d:\cs\problem solving\competitive-programming\spoj\buglife - a bug’s life\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+
