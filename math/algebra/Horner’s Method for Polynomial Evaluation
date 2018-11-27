@@ -11,7 +11,7 @@ ll horner(vector<ll> &poly,ll x)
 	ll result = poly[0];  // Initialize result 
   
     // Evaluate value of polynomial using Horner's method 
-    for (ll i=1; i<n; i++) 
+    for (ll i=1; i<poly.size(); i++) 
         result = result*x + poly[i]; 
 
     return result;
