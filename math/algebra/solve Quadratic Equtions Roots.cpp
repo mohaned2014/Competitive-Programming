@@ -6,11 +6,11 @@
 //vertex (min/max)  X= -b / 2a
 
 const ll OO = 0x3f3f3f3f;
-const double EPS = 1e-9;
+const double EPS = 1e-6;
 pair<ll,ll> Roots(double a, double b,double c)
 {
-  double d = fabs((b*b) -(4*a*c));
-  if( d <  EPS) return {-OO,-OO};
+  double d = (b*b) -(4*a*c);
+  if( d < -EPS) return {-OO,-OO};
   pair<ll,ll> res;
   res.first = ( (-b) +sqrt(d)  ) / (2*a) +0.5 ;
   res.second = ( (-b) -sqrt(d) ) / (2*a) +0.5;
