@@ -1,0 +1,101 @@
+#include "bits/stdc++.h"
+
+using namespace std;
+
+#define ll long long
+#define  ii pair<int,int>
+#define vii vector<ii>
+const int N = 220 +9;
+const int OO = (int)1e9;
+
+#define MAXNODES 220
+
+struct DSU
+{
+    int parent[MAXNODES];
+    int GroupSize[MAXNODES];
+
+    DSU()
+    {
+        for(int i = 0; i < MAXNODES; i++)
+        {
+            parent[i] = i;
+            GroupSize[i] = 1;
+        }
+    }
+
+    int FindLeader(int i)
+    {
+        if(parent[i] == i)  return i;
+
+        return parent[i] = FindLeader(parent[i]);
+    }
+
+    bool SameGroup(int x, int y)
+    {
+        int leader1 = FindLeader(x);
+        int leader2 = FindLeader(y);
+
+        return leader1 == leader2;
+    }
+
+
+    void MergeGroups(int x, int y)
+    {
+        int leader1 = FindLeader(x);
+        int leader2 = FindLeader(y);
+
+        if(leader1 == leader2)  return;
+
+        if(GroupSize[leader1] > GroupSize[leader2])
+        {
+            parent[leader2] =  leader1;
+            GroupSize[leader1] += GroupSize[leader2];
+        }
+
+        else
+        {
+            parent[leader1] =  leader2;
+            GroupSize[leader2] += GroupSize[leader1];
+        }
+    }
+
+    int GetSize(int x)
+    {
+        int leader = FindLeader(x);
+        return GroupSize[leader];
+    }
+};
+int n ,m;
+int xPoints[N],yPoints[N];
+int main() {
+  scanf("%d",&n );
+
+  for (int i = 0; i < n; i++) {
+    scanf("%d %d",&xPoints[i],&yPoints[i] );
+  }
+  vector<pair<double,ii> > EdgeList;
+  for (size_t i = 0; i < n; i++) {
+    for (size_t j = 0; j < n; j++) {
+      if(i==j)continue;
+      double dis = hypot(xPoints[i]-xPoints[j],yPoints[i]-yPoints[j]);
+      EdgeList.push_back({dis,{i,j}   });//cost , u , v
+    }
+  }
+    sort(EdgeList.begin(),EdgeList.end());
+
+    DSU myDsu;
+    double mstCost =0;
+    for(auto edge : EdgeList){
+      int u = edge.second.first;
+      int v = edge.second.second;
+      double cost = edge.first;
+      if(!myDsu.SameGroup(u,v)){
+        mstCost+=cost;
+        myDsu.MergeGroups(u,v);
+      }
+    }
+    printf("%.7lf\n",mstCost);
+
+
+}
