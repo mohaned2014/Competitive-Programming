@@ -1,0 +1,78 @@
+#include "bits/stdc++.h"
+
+using namespace std;
+
+#define ll long long
+#define  ii pair<int,int>
+#define vii vector<ii>
+const int N = 1e3 +9;
+const int OO = (int)1e9;
+
+vii adj[N];
+int dis[N];
+
+int n, m;
+
+bool negativeCycle(int source)
+{
+  dis[source]=0;
+  bool improvement = false;
+  queue<int>q;
+  q.push(source)
+  for(int i = 0 ;i <n;i++){
+   improvement = false;
+    while(!q.empty()){
+        int j = q.front();
+        q.pop();
+        for(auto child:adj[j]){
+          if(dis[child.first]>dis[j]+child.second){
+            dis[child.first]= dis[j]+child.second;
+            improvement=true;
+          }
+        }
+      
+    }
+
+          
+
+  }
+}
+return improvement;// return true if last try contain a imporment (negative cylce and done ) else return false
+
+
+}
+int vis[N];
+void dfs(int node){
+  vis[node]=1;
+  for(auto child:adj[node]){
+    if(!vis[child.first]){
+      dfs(child.first);
+    }
+  }
+}
+
+int main() {
+  scanf("%d %d",&n,&m );
+  fill(dis,dis+n,OO);
+  for (int i = 0; i < m; i++) {
+    int x, y, w;
+    scanf("%d %d %d",&x,&y,&w );
+    adj[x-1].push_back({y-1,w});
+  }
+  vector<int> src;
+  for (size_t i = 0; i < n; i++) {
+    if(!vis[i]){
+      src.push_back(i);
+      dfs(i);
+    }
+  }
+  bool negativeCyclebool = false;
+  for (size_t i = 0; i < src.size(); i++) {
+    negativeCyclebool  =negativeCycle(src[i]);
+    if(negativeCyclebool){
+      printf("%d\n",negativeCyclebool );
+      break;
+    }
+  }
+  if(!negativeCyclebool)printf("0\n");
+}
